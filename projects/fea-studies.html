@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- =========================================================================
+     PROJECT PAGE TEMPLATE
+     1. Copy this file, rename it (lowercase-with-hyphens.html).
+     2. Replace every ALL-CAPS placeholder.
+     3. Drop images into ../assets/fea-studies/ and fix the src paths.
+     4. Add a matching <li> block to ../projects.html.
+     Delete these comments when you're done.
+     ========================================================================= -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROJECT TITLE — Kristina Isabella Dee</title>
+<meta name="description" content="ONE SENTENCE SUMMARY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>PROJECT TITLE</h1>
+    <p class="subtitle">ONE LINE: what it is and what the headline result was.</p>
+    <ul class="tags"><li>TAG</li><li>TAG</li><li>TAG</li></ul>
+  </header>
+
+  <!-- HERO IMAGE: the single most visually striking result. Lead with it. -->
+  <figure>
+    <img src="../assets/fea-studies/hero.jpg"
+         alt="DESCRIBE THE IMAGE FOR SCREEN READERS"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>CAPTION: say what the reader should notice, not just what it is.</figcaption>
+  </figure>
+
+  <div class="prose">
+
+    <h2>Problem</h2>
+    <p>WHAT NEEDED SOLVING AND WHY IT MATTERS. Two or three sentences.</p>
+
+    <h2>My role</h2>
+    <p>WHAT YOU PERSONALLY DID versus what the team or lab did. Be precise — interviewers
+       will ask, and precision reads as credibility.</p>
+
+    <h2>Approach</h2>
+    <p>METHOD, TOOLS, KEY DECISIONS. Name the software and the analysis type.</p>
+
+  </div>
+
+  <!-- METHOD FIGURE: pipeline diagram, mesh, test setup, CAD section -->
+  <figure>
+    <img src="../assets/fea-studies/method.png" alt="ALT TEXT"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>CAPTION.</figcaption>
+  </figure>
+
+  <!-- TWO FIGURES SIDE BY SIDE: e.g. before/after, forward/reverse, coarse/fine -->
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/fea-studies/case-a.png" alt="ALT TEXT"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>CAPTION A.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/fea-studies/case-b.png" alt="ALT TEXT"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>CAPTION B.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Results</h2>
+    <p>LEAD WITH THE NUMBER. What changed, by how much, compared to what baseline.</p>
+  </div>
+
+  <!-- RESULTS TABLE -->
+  <div class="table-scroll">
+    <table>
+      <caption class="visually-hidden">TABLE DESCRIPTION</caption>
+      <thead>
+        <tr><th>CASE</th><th>QUANTITY</th><th>QUANTITY</th><th>ERROR</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VIDEO: mechanism running, simulation animation, test in progress.
+       Keep under ~10 MB. For anything longer, upload unlisted to YouTube and embed. -->
+  <figure>
+    <video controls muted loop playsinline
+           poster="../assets/fea-studies/video-poster.jpg">
+      <source src="../assets/fea-studies/demo.mp4" type="video/mp4">
+      Your browser doesn&rsquo;t support embedded video.
+    </video>
+    <figcaption>CAPTION: what the clip shows.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>What I&rsquo;d do next</h2>
+    <p>LIMITATIONS AND THE NEXT EXPERIMENT. This section is where engineers judge judgment —
+       don&rsquo;t skip it, and don&rsquo;t hide the things that didn&rsquo;t work.</p>
+  </div>
+
+  <p>
+    <a class="button" href="../assets/docs/PROJECT-REPORT.pdf">Full report (PDF)</a>
+    <a class="button" href="https://github.com/kristinadee/REPO">Code</a>
+  </p>
+
+  <!-- Metadata block, styled after a drawing title block -->
+  <dl class="title-block">
+    <div><dt>Course or lab</dt><dd>COURSE CODE / LAB NAME</dd></div>
+    <div><dt>Dates</dt><dd>MON YEAR – MON YEAR</dd></div>
+    <div><dt>Team</dt><dd>SOLO / N PEOPLE</dd></div>
+    <div><dt>Tools</dt><dd>TOOL, TOOL</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

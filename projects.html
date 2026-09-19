@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Kristina Isabella Dee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="index.html">Kristina Isabella Dee</a>
+  <a href="projects.html" aria-current="page">Projects</a>
+  <a href="about.html">About</a>
+  <a href="assets/docs/resume.pdf">Résumé</a>
+  <a href="https://www.linkedin.com/in/kristinaidee">LinkedIn</a>
+</nav>
+
+<main class="wrap">
+  <h1>Projects</h1>
+  <p class="subtitle">Simulation, mechanical design, and experimental work.</p>
+
+  <!-- Filter buttons. The data-filter value must match a word in data-tags below. -->
+  <div class="filters" id="filters">
+    <button data-filter="all" aria-pressed="true">All</button>
+    <button data-filter="biomechanics" aria-pressed="false">Biomechanics</button>
+    <button data-filter="fea" aria-pressed="false">FEA</button>
+    <button data-filter="cfd" aria-pressed="false">CFD</button>
+    <button data-filter="design" aria-pressed="false">Mechanical design</button>
+    <button data-filter="controls" aria-pressed="false">Controls</button>
+    <button data-filter="experimental" aria-pressed="false">Experimental</button>
+  </div>
+
+  <ul class="project-list" id="projects">
+
+    <li data-tags="biomechanics fea">
+      <a href="projects/uterine-fea.html">
+        <img src="assets/uterine-fea/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Patient-specific uterine mechanics</p>
+          <p class="project-blurb">Image-based parametric FEA scaled to a five-patient cohort.</p>
+          <ul class="tags"><li>FEA</li><li>FEBio</li><li>HyperMesh</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="design">
+      <a href="projects/robotics-studio.html">
+        <img src="assets/robotics-studio/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Robotics Studio design</p>
+          <p class="project-blurb">EDIT: one line.</p>
+          <ul class="tags"><li>Robotics</li><li>SolidWorks</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="controls">
+      <a href="projects/rl-hvac.html">
+        <img src="assets/rl-hvac/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Reinforcement learning for building heating control</p>
+          <p class="project-blurb">Soft Actor-Critic agents in FMU co-simulation.</p>
+          <ul class="tags"><li>Controls</li><li>Python</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="cfd">
+      <a href="projects/tesla-valve.html">
+        <img src="assets/tesla-valve/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Tesla valve CFD analysis</p>
+          <p class="project-blurb">Diodicity across Reynolds number, with grid convergence and a
+            geometry redesign that didn&rsquo;t work.</p>
+          <ul class="tags"><li>CFD</li><li>Ansys</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="design">
+      <a href="projects/math-mouse.html">
+        <img src="assets/math-mouse/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Math Mouse mechanical calculator</p>
+          <p class="project-blurb">A fully mechanical arithmetic toy with no removable parts.</p>
+          <ul class="tags"><li>SolidWorks</li><li>3D Printing</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="fea">
+      <a href="projects/fea-studies.html">
+        <img src="assets/fea-studies/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">FEA studies</p>
+          <p class="project-blurb">Stress concentration, force fit, and contact analyses with mesh
+            convergence.</p>
+          <ul class="tags"><li>FEA</li><li>SolidWorks Simulation</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="experimental">
+      <a href="projects/chladni.html">
+        <img src="assets/chladni/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Chladni plate modal characterization</p>
+          <p class="project-blurb">FFT-based identification of vibrational modes in a
+            center-clamped aluminum plate.</p>
+          <ul class="tags"><li>Experimental Methods</li><li>Signal Processing</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <!-- COPY a block above to add: Steinway Tower, bike attachment, robot femur,
+         seaplane, solar tracker, car jack, cryotherapy heat transfer. -->
+
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <p>kristinadee.github.io &middot;
+     <a href="mailto:YOUR-EMAIL@columbia.edu">YOUR-EMAIL@columbia.edu</a></p>
+</footer>
+
+<script>
+  // Tag filtering. Reads data-tags on each <li> and data-filter on each button.
+  const buttons = document.querySelectorAll('#filters button');
+  const items = document.querySelectorAll('#projects li');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      buttons.forEach(b => b.setAttribute('aria-pressed', b === button));
+      items.forEach(item => {
+        const match = filter === 'all' || item.dataset.tags.split(' ').includes(filter);
+        item.hidden = !match;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

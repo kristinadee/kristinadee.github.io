@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Image placeholder">
+  <rect width="400" height="300" fill="#EDEFF1"/>
+  <g fill="none" stroke="#C3C9CE" stroke-width="1">
+    <path d="M0 150h400M200 0v300"/>
+  </g>
+  <text x="200" y="285" text-anchor="middle" fill="#8A939B"
+        font-family="IBM Plex Mono, monospace" font-size="12">add image here</text>
+</svg>

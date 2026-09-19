@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla valve CFD analysis — Kristina Isabella Dee</title>
+<meta name="description" content="CFD study of diodicity in a Tesla valve across Reynolds number, with grid convergence and geometry optimization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Tesla valve CFD analysis</h1>
+    <p class="subtitle">A valve with no moving parts: quantifying how geometry and flow regime
+      set its one-way resistance.</p>
+    <ul class="tags"><li>CFD</li><li>Ansys Fluent</li><li>Fluid Mechanics</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/tesla-valve/hero-streamlines.png"
+         alt="Velocity streamlines through a Tesla valve in reverse flow at Reynolds number 300"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Reverse flow at Re = 300. The diverted branches shed momentum into the main
+      channel, which is what produces the pressure penalty.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Problem</h2>
+    <p>A Tesla valve resists flow in one direction using geometry alone — no seals, no moving
+      parts, nothing to wear out. That makes it attractive for microfluidics and for any system
+      where a mechanical check valve would fail. Its effectiveness is measured as diodicity, the
+      ratio of reverse to forward pressure drop, and the open question was how strongly that
+      figure depends on flow regime and on the number of repeating elements.</p>
+
+    <h2>My role</h2>
+    <p>EDIT: state exactly which parts you ran — geometry and meshing, the Reynolds sweep, the
+      grid convergence study, or the cambered redesign — and what your two teammates did.</p>
+
+    <h2>Approach</h2>
+    <p>I built the planar valve geometry in Ansys Design Modeler and used split faces to
+      discretize the inlet, repeating, and outlet regions separately. Meshing was quadrilateral-
+      dominant at 2.5 mm element size with edge sizing at the inlet and outlet. Reynolds number
+      was set by scaling inlet velocity against a 2 mm channel width, and each configuration was
+      run in both forward and reverse flow so the pressure drops could be compared directly.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/tesla-valve/mesh.png" alt="Quadrilateral-dominant mesh of the valve"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Baseline mesh, 2576 nodes.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/tesla-valve/pressure-forward.png"
+           alt="Static pressure contours in forward flow"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Forward flow loses 44.7 Pa against 58.9 Pa in reverse.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Results</h2>
+    <p>The baseline valve reached a diodicity of 1.317 at Re = 300, consistent with published
+      simulation and experimental data. Diodicity rose steadily with Reynolds number and fell
+      below 1 near Re = 50, where viscous effects dominate and the geometry stops working as a
+      diode. Adding repeating elements increased pressure drop linearly in both directions.</p>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Mesh</th><th>Nodes</th><th>&Delta;P reverse (Pa)</th><th>&Delta;P forward (Pa)</th><th>Diodicity</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Coarse (&minus;50%)</td><td>1288</td><td>54.78</td><td>43.27</td><td>1.266</td></tr>
+        <tr><td>Baseline</td><td>2576</td><td>58.90</td><td>44.72</td><td>1.317</td></tr>
+        <tr><td>Fine (+50%)</td><td>3864</td><td>59.01</td><td>45.67</td><td>1.292</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose">
+    <p>The contours looked identical across all three meshes, but diodicity moved by about 4%,
+      so the solution is not grid independent. Reporting that spread matters more than reporting
+      a single number.</p>
+
+    <h2>The redesign that failed</h2>
+    <p>I modeled a cambered, airfoil-profiled insert on the theory that its pressure differential
+      would divert reverse flow more aggressively. It did the opposite: diodicity dropped to
+      1.004 at Re = 250, against 1.107 for the original at the same condition. The velocity
+      contours showed why — the profile never generated recirculation in the reverse branches,
+      so nothing slowed the flow along the conduit. The angle of attack was likely too shallow.</p>
+
+    <h2>What I&rsquo;d do next</h2>
+    <p>Run a proper angle-of-attack sweep on the cambered insert rather than testing a single
+      profile, and extend the element-count study far enough to find where diodicity saturates.
+      A finer mesh series would also pin down grid independence, which this study didn&rsquo;t
+      establish.</p>
+  </div>
+
+  <p><a class="button" href="../assets/docs/tesla-valve-report.pdf">Full report (PDF)</a></p>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>MECE E3100</dd></div>
+    <div><dt>Team</dt><dd>3 people</dd></div>
+    <div><dt>Tools</dt><dd>Ansys Fluent, Design Modeler</dd></div>
+    <div><dt>Deliverable</dt><dd>Technical report</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* =========================================================
+   Kristina Isabella Dee — portfolio stylesheet
+   Edit the tokens below to change the whole site at once.
+   ========================================================= */
+
+:root {
+  /* Color */
+  --paper:      #F6F7F8;   /* page background */
+  --surface:    #FFFFFF;   /* cards, figures */
+  --ink:        #1A1D21;   /* body text */
+  --muted:      #5C6570;   /* secondary text */
+  --rule:       #D9DDE0;   /* hairlines, borders */
+  --accent:     #9B1B47;   /* links, active state */
+  --tag:        #2E5E6B;   /* skill tags */
+
+  /* Type */
+  --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --serif: "IBM Plex Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --measure: 34rem;        /* reading width: ~70 characters */
+  --wide: 62rem;           /* full page width */
+  --gap: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:   #14171A;
+    --surface: #1C2025;
+    --ink:     #E8EAEC;
+    --muted:   #9AA3AC;
+    --rule:    #2E343A;
+    --accent:  #E4749B;
+    --tag:     #7FB3C0;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 5rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout containers ---------- */
+
+.wrap { max-width: var(--wide); margin: 0 auto; }
+.prose { max-width: var(--measure); }
+.prose p, .prose li { font-family: var(--serif); line-height: 1.7; }
+
+/* ---------- Site navigation ---------- */
+
+.site-nav {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 1.75rem 0 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.25rem;
+}
+.site-nav .name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-right: auto;
+  text-decoration: none;
+  color: var(--ink);
+}
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { color: var(--accent); }
+
+/* ---------- Headings ---------- */
+
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 0.5rem; }
+h2 { font-size: 1.375rem; margin: 2.75rem 0 0.75rem; }
+h3 { font-size: 1.0625rem; margin: 1.75rem 0 0.5rem; }
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--muted);
+  max-width: var(--measure);
+  margin: 0 0 1.5rem;
+}
+
+/* ---------- Home hero ---------- */
+
+.hero { padding: 1rem 0 3.5rem; border-bottom: 1px solid var(--rule); }
+.hero .lede {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: var(--measure);
+}
+
+/* ---------- Project list ---------- */
+
+.project-list { list-style: none; padding: 0; margin: 0; }
+.project-list li { border-bottom: 1px solid var(--rule); }
+.project-list a {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: var(--gap);
+  padding: 1.5rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+.project-list a:hover .project-title { color: var(--accent); }
+.project-list img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+.project-title { font-weight: 600; letter-spacing: -0.01em; }
+.project-blurb { color: var(--muted); font-size: 0.9375rem; margin: 0.25rem 0 0.6rem; }
+
+@media (max-width: 34rem) {
+  .project-list a { grid-template-columns: 1fr; }
+}
+
+/* ---------- Skill tags ---------- */
+
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; margin: 0; }
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--tag);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+}
+
+/* Filter buttons on the projects page */
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 2rem; padding: 0; }
+.filters button {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+}
+.filters button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.filters button:focus-visible,
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Figures, images, video ---------- */
+
+figure { margin: 2rem 0; }
+figure img, figure video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+figcaption {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  max-width: var(--measure);
+}
+
+/* Side-by-side figures */
+.figure-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+@media (max-width: 42rem) { .figure-pair { grid-template-columns: 1fr; } }
+
+/* ---------- Results tables ---------- */
+
+.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
+table { border-collapse: collapse; font-size: 0.9375rem; min-width: 30rem; }
+th, td { text-align: left; padding: 0.5rem 1rem 0.5rem 0; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; }
+td { font-family: var(--mono); font-size: 0.875rem; }
+
+/* ---------- Title block (project metadata, borrowed from drawing sheets) ---------- */
+
+.title-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  border: 1px solid var(--rule);
+  margin: 3rem 0 0;
+}
+.title-block div { padding: 0.75rem 1rem; border-right: 1px solid var(--rule); }
+.title-block div:last-child { border-right: none; }
+.title-block dt { font-size: 0.75rem; color: var(--muted); margin: 0 0 0.15rem; }
+.title-block dd { font-family: var(--mono); font-size: 0.8125rem; margin: 0; }
+
+/* ---------- Links & buttons ---------- */
+
+a { color: var(--accent); }
+.button {
+  display: inline-block;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.45rem 0.9rem;
+  margin: 1rem 1rem 0 0;
+}
+.button:hover { background: var(--accent); color: var(--paper); }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  max-width: var(--wide);
+  margin: 4rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
