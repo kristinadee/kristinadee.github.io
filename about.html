@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Kristina Isabella Dee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="index.html">Kristina Isabella Dee</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html" aria-current="page">About</a>
+  <a href="assets/docs/resume.pdf">Résumé</a>
+  <a href="https://www.linkedin.com/in/kristinaidee">LinkedIn</a>
+</nav>
+
+<main class="wrap">
+  <h1>About</h1>
+
+  <div class="prose">
+    <p>I&rsquo;m a senior at Columbia studying mechanical engineering, graduating in May 2027.</p>
+
+    <p>Most of my work sits at the point where a physical system is too complicated to reason
+      about without a model, and too consequential to model carelessly. In pregnancy that
+      gap is wide: only about 5% of births arrive on the estimated date, preterm birth affects
+      roughly a tenth of births worldwide, and the mechanics regulating labor onset are difficult
+      to observe directly in a patient. Finite element modeling is one of the few ways to study
+      that environment without touching anyone, which is what drew me to it and why I want to
+      keep working on it.</p>
+
+    <p>The other half of how I work is in the shop. I machine, cast, mold and print the things
+      I design, and that habit changes how I model &mdash; it is harder to accept a clean
+      simulation result after watching a mold leave its layer lines on every part that comes out
+      of it, or a printed bearing wobble a mechanism out of sync. Both halves point at the same
+      question, which is whether a result describes the thing or describes the method used to
+      get it.</p>
+
+    <p>I&rsquo;m looking for R&amp;D roles in medical devices and women&rsquo;s health, and
+      I&rsquo;m happy to talk about any of the work here.</p>
+
+    <h2>What I&rsquo;m working on</h2>
+    <p>In the Computational Biomechanics Research Lab under Prof. Vijay Vedula, I scaled a
+      patient-specific uterine mechanics pipeline from a single-patient proof of concept to a
+      five-patient cohort, running nonlinear finite element jobs on HPC and verifying a fast
+      Robin boundary condition model against a contact-based FEBio reference.
+      <a href="projects/uterine-fea.html">That work is written up here.</a></p>
+    <p>This year I&rsquo;m also on a five-person senior design team building an assistive
+      menstrual disc inserter &mdash; a device that lets people with limited hand dexterity or
+      mobility place a disc independently. We&rsquo;re translating user needs into design
+      requirements and early SolidWorks concepts now, and it will go on this site once there is
+      something built to show.</p>
+    <p>Before that I spent a year in the Building Energy Research Lab designing Soft Actor-Critic
+      agents for building heating control, validated in FMU co-simulation.</p>
+
+    <h2>Publications and presentations</h2>
+    <p>Dee K, Mergler O, Myers K, Vedula V. <em>Multi-Patient Evaluation of Computational Models
+      of Uterine Mechanics.</em> Poster, Columbia University Undergraduate Research Symposium,
+      New York, NY, October 2026.</p>
+    <p>Mergler O, Dee K, et al. <em>A Method for Image-Based Modeling of Uterine Passive
+      Mechanics During Late Pregnancy.</em> In revision, Annals of Biomedical Engineering.
+      Preprint: <a href="https://doi.org/10.64898/2026.07.10.737823">bioRxiv
+      10.64898/2026.07.10.737823</a></p>
+
+    <h2>Industry experience</h2>
+    <p>I interned at Nanov Display Inc. in spring 2025, designing weather-resistant outdoor
+      kiosks and transit LCD and LED signage in SolidWorks and AutoCAD, and releasing the
+      drawings and renderings that went with them. I set up new displays end to end &mdash; all
+      electrical and PCB-level wiring, embedded system configuration on Windows and Ubuntu, and
+      factory acceptance testing with the compliance documentation behind it.</p>
+    <p>It was a small Brooklyn office and I was the only engineer handling that side, so I also
+      ran technical-support meetings with suppliers, worked with them to bring BOM cost down, and
+      hosted visiting clients through the warehouse and kiosks. That work is covered by
+      confidentiality, so none of it appears on this site &mdash; but it is where I learned what
+      it takes to release a drawing someone else has to build from, and I&rsquo;m glad to talk
+      about the engineering in general terms.</p>
+
+    <h2>Skills</h2>
+
+    <h3>Simulation and biomechanics</h3>
+    <p>Nonlinear FEA in FEBio and svMultiPhysics, soft-tissue mechanics, GOH anisotropic
+      hyperelasticity, rule-based fiber modeling, model verification and validation</p>
+
+    <h3>Geometry, meshing and visualization</h3>
+    <p>Ultrasound and MRI-based parametric geometry, SolidWorks, HyperMesh (HEX8/TET4),
+      ParaView</p>
+
+    <h3>Computing</h3>
+    <p>Python (NumPy, SciPy, PyTorch), MATLAB, C++, HPC and MPI via SLURM, Linux, reinforcement
+      learning (SAC, TD3), CNNs, NLP</p>
+
+    <h3>Design, prototyping and manufacturing</h3>
+    <p>AutoCAD, manufacturing drawings and GD&amp;T, BOM development, factory acceptance testing,
+      CNC milling (Tormach), G-code and CAM programming, manual mill and lathe, precision
+      metrology, silicone casting, injection molding, 3D printing</p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:ked2188@columbia.edu">ked2188@columbia.edu</a><br>
+       <a href="https://www.linkedin.com/in/kristinaidee">linkedin.com/in/kristinaidee</a></p>
+  </div>
+
+  <p><a class="button" href="assets/docs/resume.pdf">Download résumé</a></p>
+</main>
+
+<footer class="site-footer">
+  <p>kristinadee.github.io</p>
+</footer>
+
+</body>
+</html>

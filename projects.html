@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Kristina Isabella Dee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="index.html">Kristina Isabella Dee</a>
+  <a href="projects.html" aria-current="page">Projects</a>
+  <a href="about.html">About</a>
+  <a href="assets/docs/resume.pdf">Résumé</a>
+  <a href="https://www.linkedin.com/in/kristinaidee">LinkedIn</a>
+</nav>
+
+<main class="wrap">
+  <h1>Projects</h1>
+  <p class="subtitle">Simulation, controls, mechanical design and experimental work.</p>
+
+  <div class="filters" id="filters">
+    <button data-filter="all" aria-pressed="true">All</button>
+    <button data-filter="biomechanics" aria-pressed="false">Biomechanics</button>
+    <button data-filter="simulation" aria-pressed="false">Simulation</button>
+    <button data-filter="controls" aria-pressed="false">Controls</button>
+    <button data-filter="design" aria-pressed="false">Design</button>
+    <button data-filter="manufacturing" aria-pressed="false">Manufacturing</button>
+    <button data-filter="experimental" aria-pressed="false">Experimental</button>
+  </div>
+
+  <ul class="project-list" id="projects">
+
+    <li data-tags="biomechanics simulation">
+      <a href="projects/uterine-fea.html">
+        <img src="assets/uterine-fea/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Multi-patient uterine mechanics</p>
+          <p class="project-blurb">A verified single-patient framework scaled to five patients —
+            and tested to see whether its tuned parameters survive the move.</p>
+          <ul class="tags"><li>FEA</li><li>FEBio</li><li>svMultPhys</li><li>HyperMesh</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="controls simulation">
+      <a href="projects/rl-hvac.html">
+        <img src="assets/rl-hvac/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Reinforcement learning for building heating control</p>
+          <p class="project-blurb">Soft Actor-Critic agents in FMU co-simulation, for fixed and
+            occupancy-scheduled setpoints. Code included.</p>
+          <ul class="tags"><li>Reinforcement Learning</li><li>Python</li><li>PyTorch</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="manufacturing design">
+      <a href="projects/materials-car.html">
+        <img src="assets/materials-car/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Cast and injection-molded model car</p>
+          <p class="project-blurb">Silicone casting from printed molds, and injection molding from
+            CNC-machined aluminum tooling.</p>
+          <ul class="tags"><li>Casting</li><li>CNC/CAM</li><li>Injection Molding</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="simulation">
+      <a href="projects/tesla-valve.html">
+        <img src="assets/tesla-valve/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Tesla valve CFD analysis</p>
+          <p class="project-blurb">Diodicity across Reynolds number, validated against published
+            data — plus a redesign that made it worse.</p>
+          <ul class="tags"><li>CFD</li><li>Ansys Fluent</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="design controls experimental">
+      <a href="projects/solar-tracker.html">
+        <img src="assets/solar-tracker/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Dual-axis solar tracker</p>
+          <p class="project-blurb">Built, found unstable, rebuilt around scan-and-sweep control.
+            Aligned in eight of nine test positions.</p>
+          <ul class="tags"><li>Mechatronics</li><li>Arduino</li><li>SolidWorks</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="design">
+      <a href="projects/biped-robot.html">
+        <img src="assets/biped-robot/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Bi-pedal jumping robot</p>
+          <p class="project-blurb">Sketches through two CAD iterations. The redesign added 19%
+            mass in actuation and doubled design speed &mdash; because springs alone can&rsquo;t
+            jump.</p>
+          <ul class="tags"><li>Robotics</li><li>SolidWorks</li><li>Mechanism Design</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="design">
+      <a href="projects/math-mouse.html">
+        <img src="assets/math-mouse/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Math Mouse mechanical calculator</p>
+          <p class="project-blurb">A children&rsquo;s arithmetic toy with no electronics and no
+            removable part, built on two opposed one-way bearings.</p>
+          <ul class="tags"><li>Mechanism Design</li><li>SolidWorks</li><li>3D Printing</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="manufacturing">
+      <a href="projects/car-jack.html">
+        <img src="assets/car-jack/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Machined scissor jack</p>
+          <p class="project-blurb">A working lead-screw jack across four processes — CNC mill,
+            bandsaw, drill press and laser cutter.</p>
+          <ul class="tags"><li>Machining</li><li>CNC</li><li>G-code</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="experimental">
+      <a href="projects/chladni.html">
+        <img src="assets/chladni/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Chladni plate modal characterization</p>
+          <p class="project-blurb">Six vibrational modes identified two ways, with errors from
+            1.4% to 26.8% — and an explanation for the spread.</p>
+          <ul class="tags"><li>Experimental Methods</li><li>FFT</li><li>Vibrations</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="simulation">
+      <a href="projects/fea-studies.html">
+        <img src="assets/fea-studies/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">FEA studies</p>
+          <p class="project-blurb">Stress concentration with mesh convergence, an interference
+            fit, and a contact analysis.</p>
+          <ul class="tags"><li>FEA</li><li>SolidWorks Simulation</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="design">
+      <a href="projects/cad-studies.html">
+        <img src="assets/seaplane/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">CAD and drawing studies</p>
+          <p class="project-blurb">Surface modeling, a complete drawing package with GD&amp;T and
+            BOM, and a weight-driven structural part.</p>
+          <ul class="tags"><li>SolidWorks</li><li>Technical Drawing</li><li>GD&amp;T</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="simulation">
+      <a href="projects/steinway.html">
+        <img src="assets/steinway/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Supertall tower aerodynamics</p>
+          <p class="project-blurb">Why a superslim tower needs a tuned mass damper, worked out
+            analytically on a simplified model.</p>
+          <ul class="tags"><li>Fluid Mechanics</li><li>Vortex Shedding</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li data-tags="experimental">
+      <a href="projects/cryotherapy.html">
+        <img src="assets/cryotherapy/thumb.jpg" alt="" onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Cryotherapy as a heat transfer problem</p>
+          <p class="project-blurb">A review of bioheat transfer and latent heat in freezing
+            tissue, across the clinical range of cold therapy.</p>
+          <ul class="tags"><li>Heat Transfer</li><li>Bioheat</li><li>Review</li></ul>
+        </div>
+      </a>
+    </li>
+
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <p>kristinadee.github.io &middot;
+     <a href="mailto:ked2188@columbia.edu">ked2188@columbia.edu</a></p>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('#filters button');
+  const items = document.querySelectorAll('#projects li');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      buttons.forEach(b => b.setAttribute('aria-pressed', b === button));
+      items.forEach(item => {
+        const match = filter === 'all' || item.dataset.tags.split(' ').includes(filter);
+        item.hidden = !match;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

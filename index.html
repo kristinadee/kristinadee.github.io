@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kristina Isabella Dee — Mechanical Engineering</title>
+<meta name="description" content="Mechanical engineering portfolio: patient-specific finite element modeling for women's health, controls, and hands-on design and manufacturing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="index.html">Kristina Isabella Dee</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html">About</a>
+  <a href="assets/docs/resume.pdf">Résumé</a>
+  <a href="https://www.linkedin.com/in/kristinaidee">LinkedIn</a>
+</nav>
+
+<main class="wrap">
+
+  <header class="hero">
+    <h1>Patient-specific modeling for women&rsquo;s health</h1>
+    <p class="lede">
+      I&rsquo;m a senior mechanical engineer at Columbia building finite element models of soft
+      tissue in pregnancy &mdash; most recently scaling a uterine mechanics pipeline from one
+      patient to five on HPC. Alongside that, reinforcement learning for building controls and
+      a hands-on habit of machining, casting and molding the things I design.
+      I&rsquo;m looking for R&amp;D work in medical devices and women&rsquo;s health.
+    </p>
+  </header>
+
+  <h2>Selected work</h2>
+  <ul class="project-list">
+
+    <li>
+      <a href="projects/uterine-fea.html">
+        <img src="assets/uterine-fea/thumb.jpg" alt=""
+             onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Multi-patient uterine mechanics</p>
+          <p class="project-blurb">Scaled a verified single-patient modeling framework to a
+            five-patient cohort. Mean agreement of 3.6&nbsp;&plusmn;&nbsp;2.2&nbsp;mm across
+            580,749 nodes, with boundary conditions transferring between anatomies without
+            re-tuning.</p>
+          <ul class="tags"><li>FEA</li><li>Biomechanics</li><li>FEBio</li><li>HPC</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li>
+      <a href="projects/rl-hvac.html">
+        <img src="assets/rl-hvac/thumb.jpg" alt=""
+             onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Reinforcement learning for building heating control</p>
+          <p class="project-blurb">Soft Actor-Critic agents holding a comfort band in FMU
+            co-simulation, stabilized with TD3 techniques to replace bang-bang switching with
+            smooth modulation.</p>
+          <ul class="tags"><li>Reinforcement Learning</li><li>Controls</li><li>PyTorch</li></ul>
+        </div>
+      </a>
+    </li>
+
+    <li>
+      <a href="projects/materials-car.html">
+        <img src="assets/materials-car/thumb.jpg" alt=""
+             onerror="this.src='assets/placeholder.svg'">
+        <div>
+          <p class="project-title">Cast and injection-molded model car</p>
+          <p class="project-blurb">One object, two tooling routes: a silicone-cast body from
+            3D-printed molds, and injection-molded wheels from CNC-machined aluminum.</p>
+          <ul class="tags"><li>Manufacturing</li><li>CNC/CAM</li><li>Injection Molding</li></ul>
+        </div>
+      </a>
+    </li>
+
+  </ul>
+
+  <p><a class="button" href="projects.html">See all projects</a></p>
+
+</main>
+
+<footer class="site-footer">
+  <p>kristinadee.github.io &middot;
+     <a href="mailto:ked2188@columbia.edu">ked2188@columbia.edu</a> &middot;
+     <a href="https://www.linkedin.com/in/kristinaidee">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
