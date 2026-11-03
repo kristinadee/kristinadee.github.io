@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cast and injection-molded model car — Kristina Isabella Dee</title>
+<meta name="description" content="A model race car built end to end through 3D-printed molds, silicone casting, CNC-machined aluminum tooling and injection molding.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Model race car: casting and injection molding</h1>
+    <p class="subtitle">One object, two tooling routes — a silicone-cast body from a 3D-printed
+      mold, and injection-molded wheels from CNC-machined aluminum.</p>
+    <ul class="tags"><li>Manufacturing</li><li>SolidWorks</li><li>CNC/CAM</li><li>Injection Molding</li><li>Casting</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/materials-car/assembly.jpg"
+         alt="The finished model car: cast blue body, yellow cockpit insert, and four translucent injection-molded spoked wheels"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The assembled car. Every component came off tooling the team designed and made —
+      nothing was printed as a final part.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Brief</h2>
+    <p>Design and fabricate a model of an early 20th-century race car using the processes covered
+      in the course: machining, silicone casting and injection molding. We chose the Maserati
+      Tipo V4 for its long curved body and spoked wheels — two shapes that push toward different
+      manufacturing routes, which is what made it worth building.</p>
+
+    <h2>Body: 3D-printed mold, silicone cast</h2>
+    <p>The body is a swept, undercut shape that cannot be machined in one setup and would show
+      layer lines if printed directly. We modeled it in SolidWorks, derived a two-part mold from
+      the solid, printed the mold in PLA, and cast the body in silicone — the print carries the
+      geometry, the casting carries the surface finish.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/materials-car/body-cad.jpg" alt="SolidWorks model of the car body"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Body model with cockpit and grille detail.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/materials-car/body-mold-cad.jpg" alt="Two-part mold cavity derived from the body model"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Mold derived from the solid, split along the parting line.</figcaption>
+    </figure>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/materials-car/body-mold-printed.jpg" alt="The PLA-printed two-part mold opened, with cast inserts beside it"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Printed PLA tooling with the cockpit and axle inserts.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/materials-car/body-cast.jpg" alt="The finished cast body in blue, with axle bushings in place"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Cast body, demolded, with the axle bores cast in.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Wheels: machined aluminum tooling, injection molded</h2>
+    <p>The wheels are the opposite problem — small, repeated four times, with thin spokes and a
+      tread that needs to come out crisp. That is an injection molding part, which meant
+      designing an aluminum mold in CAD, generating toolpaths, and machining it on the Tormach
+      before a single wheel existed.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/materials-car/wheel-cad.jpg" alt="SolidWorks model of a spoked wheel with tread"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Spoked wheel model.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/materials-car/wheel-mold-cad.jpg" alt="CAD of the aluminum mold cavity with sprue and runner"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Mold cavity with sprue, runner and gate.</figcaption>
+    </figure>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/materials-car/wheel-mold-machined.jpg" alt="The machined aluminum two-cavity wheel mold"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>The aluminum tool after CAM machining on the Tormach.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/materials-car/wheels-molded.jpg" alt="Four translucent injection-molded wheels"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Four molded wheels off the same tool.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>What the project teaches</h2>
+    <p>The interesting part is that the same car demanded two completely different tooling
+      strategies, and the choice fell out of the geometry rather than preference: an undercut
+      one-off body wants a soft cast from cheap printed tooling, while four identical
+      thin-featured parts justify cutting metal.</p>
+
+    <h2>Where the process showed its limits</h2>
+    <p>Both routes leave their signature on the part. The cast body carries the texture of the
+      printed mold, because a PLA cavity cannot be smoother than its own layer lines without
+      post-processing &mdash; sanding and sealing the cavity before casting would transfer a
+      better finish. The molded wheels show the gate witness and the parting line, which a
+      relocated gate or a vent at the last-filled feature would reduce.</p>
+    <p>The broader lesson is that tooling quality sets a ceiling on part quality that no amount
+      of care in the final process can lift. Time spent finishing the mold pays back once per
+      part, every part.</p>
+  </div>
+
+  <p><a class="button" href="../assets/docs/materials-manufacturing-report.pdf">Full report (PDF)</a></p>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>MECE E3610 Materials &amp; Processes in Manufacturing</dd></div>
+    <div><dt>Dates</dt><dd>Spring 2026</dd></div>
+    <div><dt>Team</dt><dd>4 people</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks, CAM, Tormach CNC, silicone casting, injection molding</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

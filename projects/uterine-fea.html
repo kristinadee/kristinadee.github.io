@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patient-specific uterine mechanics — Kristina Isabella Dee</title>
+<meta name="description" content="Scaling a verified two-solver framework for uterine and cervical passive mechanics from one patient to a five-patient cohort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Multi-patient evaluation of computational models of uterine mechanics</h1>
+    <p class="subtitle">A fast modeling approach was verified on one patient. I scaled it to five
+      and measured whether it still holds — mean nodal agreement of 3.6 &plusmn; 2.2 mm across
+      580,749 nodes.</p>
+    <ul class="tags"><li>FEA</li><li>Biomechanics</li><li>FEBio</li><li>svMultPhys</li><li>HyperMesh</li><li>HPC</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/uterine-fea/results.jpg"
+         alt="Nodal displacement differences between the FEBio contact model and the svMultPhys Robin boundary condition model, shown for five patients in 3D, sagittal and coronal views"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Nodal displacement difference between the two models for each patient. P2 through
+      P5 agree to within 0.4 mm of each other; P1 is the outlier at 5.7 &plusmn; 3.3 mm.</figcaption>
+  </figure>
+
+  <div class="prose">
+
+    <h2>Why model the pregnant uterus</h2>
+    <p>Only about 5% of pregnancies deliver on the estimated due date, and preterm birth before
+      37 weeks affects roughly 10% of births worldwide. Mechanics is part of why. The uterus
+      distends as the fetus grows and the cervix holds as a mechanical barrier until it softens
+      and dilates, and image-based finite element models can probe that mechanical environment
+      without touching the patient.</p>
+
+    <h2>The framework I built on</h2>
+    <p>My lab developed a cardiac-mechanics-inspired pipeline for uterine passive mechanics that
+      replaces explicit contact with the surrounding abdomen and fetal membrane by spatially
+      varying Robin boundary conditions. It matched the contact-based FEBio reference to an
+      average nodal displacement difference of 3.1 &plusmn; 1.6&nbsp;mm at about 90% lower
+      computational cost &mdash; but it was developed and tuned on a single patient geometry,
+      which is where this project starts.</p>
+
+    <h2>What I did</h2>
+    <p>I extended and streamlined that single-patient pipeline to five patient-specific
+      geometries, building four new patient models (P2&ndash;P5) and testing whether one
+      standardized workflow, and one set of boundary condition parameters tuned on a different
+      anatomy, transfers across anatomical variability. I ran all ten simulations — five in
+      FEBio, five in svMultPhys — and built the cross-patient comparison.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/uterine-fea/pipeline.png"
+         alt="Eight-step workflow: patient dimensions, SolidWorks parametric CAD, HyperMesh hybrid mesh, ParaView surfaces, Laplace and LDRB fibers, FEBio contact baseline, svMultPhys Robin boundary conditions, cross-patient comparison"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The workflow, applied identically to all five patients. Teal steps build the
+      geometry and model; orange steps run and compare the simulations.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Building each patient</h2>
+    <p>Geometry is parametric rather than segmented. A SolidWorks template developed by Louwagie
+      et al. is driven by a design table of sagittal, axial and cervical measurements taken from
+      ultrasound and MRI, so each patient is a new set of dimensions rather than a new model.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/uterine-fea/geometry.png"
+         alt="Image-based measurement scheme on the left and the resulting SolidWorks assembly of uterus, cervix, membrane and abdomen on the right"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Measurements from imaging drive the parametric template; the assembly carries
+      uterus, cervix, fetal membrane and abdomen.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>Meshing is where most of the hands-on difficulty lives. Every component is meshed in
+      HyperMesh with <em>continuous nodes</em> across the uterus&ndash;cervix interface and
+      across model halves — a Boolean that keeps the shared interface, so the mesher is forced to
+      align nodes without merging the solids. That continuity is what removes the need to define
+      contact between those tissues at all.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/uterine-fea/meshing.png"
+         alt="Table of mesh parameters per component beside a cutaway of the hybrid mesh at the uterus-cervix interface"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Hybrid HEX8 and TET4 meshing. The uterus takes a hexahedral solid map with at
+      least three elements through the wall; the cervix is surface-seeded tetrahedra graded from
+      0.4 to 2 mm.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/uterine-fea/fibers.png"
+         alt="Laplace-Dirichlet scalar fields, the resulting LDRB fiber directions through the uterine wall, and the GOH material model fit against experimental tension and compression data"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Four Laplace problems per patient define apico-basal and transmural fields; LDRB
+      then generates fibers — longitudinal in the uterus, circumferential in the cervix, blended
+      through the isthmus. The GOH model is fit to tissue test data.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/uterine-fea/boundary-conditions.png"
+         alt="Diagram comparing the contact-based FEBio configuration with sliding and tied contacts against the svMultPhys spring-dashpot Robin boundary conditions"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The two configurations under the same intrauterine pressure. FEBio resolves
+      sliding and tied contact with the abdomen and membrane; svMultPhys replaces those tissues
+      with springs and dashpots on the surface.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Results</h2>
+    <p>Across all five patients and 580,749 nodes, the two models agreed to a mean nodal
+      displacement difference of 3.6 &plusmn; 2.2 mm, with a maximum of 12.7 mm. Per-patient means
+      ranged from 2.8 to 5.7 mm.</p>
+    <p>The result that matters: the Robin boundary condition parameters were tuned on P5 and
+      transferred to the other anatomies <em>without re-tuning</em>. P2 through P4 landed within
+      0.4 mm of P5. P1 was the single outlier at 5.7 &plusmn; 3.3 mm.</p>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Patient</th><th>Mean difference (mm)</th><th>Max difference (mm)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>P1</td><td>5.7 &plusmn; 3.3</td><td>12.7</td></tr>
+        <tr><td>P2</td><td>3.5 &plusmn; 2.0</td><td>8.1</td></tr>
+        <tr><td>P3</td><td>3.3 &plusmn; 1.4</td><td>8.3</td></tr>
+        <tr><td>P4</td><td>2.8 &plusmn; 1.4</td><td>7.1</td></tr>
+        <tr><td>P5 <span style="font-family:var(--sans);font-size:.8125rem;color:var(--muted)">(tuned)</span></td><td>3.1 &plusmn; 1.6</td><td>7.2</td></tr>
+        <tr><td><strong>Pooled</strong></td><td><strong>3.6 &plusmn; 2.2</strong></td><td><strong>12.7</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose">
+    <p>Where the models disagree is as informative as the average. The largest differences sit at
+      the lateral wall in the coronal view and the posterior wall in the sagittal view, which is
+      consistent with omnidirectional springs being unable to represent sliding between the
+      uterus and the abdomen. The cervix agreed most closely — the same pattern the
+      single-patient study found.</p>
+
+    <h2>What scaling actually cost</h2>
+    <p>Moving from one patient to five surfaced bottlenecks that a single case never exposes:
+      fillet-driven stress concentrations in the parametric geometry, node continuity across the
+      uterus&ndash;cervix interface, and mesh conversion between the two solvers. Resolving those
+      into one documented protocol — geometry through meshing, surfaces, fibers and solvers — is
+      a large part of what this work produced.</p>
+
+    <h2>What I&rsquo;d do next</h2>
+    <p>P1 is the open question. Five patients is still a small cohort, and the fact that one
+      anatomy falls outside the band the others share is the thing worth chasing before the
+      pipeline is trusted on a larger group. Boundary condition tuning is also still manual,
+      which does not scale to cohort-size studies; automating it is the obvious next step toward
+      the longitudinal growth-and-remodeling and active contraction models this framework is
+      meant to support.</p>
+  </div>
+
+  <p>
+    <a class="button" href="../assets/docs/uterine-mechanics-poster.pdf">Research poster (PDF)</a>
+    <a class="button" href="https://doi.org/10.64898/2026.07.10.737823">Framework preprint</a>
+  </p>
+
+  <div class="prose">
+    <h2>Related publications</h2>
+    <p>Dee K, Mergler O, Myers K, Vedula V. <em>Multi-Patient Evaluation of Computational Models
+      of Uterine Mechanics.</em> Poster, Columbia University Undergraduate Research Symposium,
+      New York, NY, October 2026. &mdash; the work on this page.</p>
+    <p>Mergler O, Dee K, et al. <em>A Method for Image-Based Modeling of Uterine Passive
+      Mechanics During Late Pregnancy.</em> In revision, Annals of Biomedical Engineering.
+      Preprint: bioRxiv 10.64898/2026.07.10.737823 &mdash; the method this work extends and
+      tests.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Lab</dt><dd>Computational Biomechanics Research Lab</dd></div>
+    <div><dt>Advisor</dt><dd>Prof. Vijay Vedula</dd></div>
+    <div><dt>Dates</dt><dd>Apr 2025 – present</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks, HyperMesh, FEBio, svMultPhys, ParaView</dd></div>
+    <div><dt>Compute</dt><dd>ACCESS (SDSC Expanse), Columbia Ginsburg HPC</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

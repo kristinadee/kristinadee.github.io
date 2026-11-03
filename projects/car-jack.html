@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Machined scissor jack — Kristina Isabella Dee</title>
+<meta name="description" content="A working scissor jack built across four processes: CNC milling, bandsaw, drill press and laser cutting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Machined scissor jack</h1>
+    <p class="subtitle">A working lead-screw jack made from acrylic and printed parts — the
+      project where the drawing stops being theoretical and the holes have to line up.</p>
+    <ul class="tags"><li>Machining</li><li>CNC</li><li>G-code</li><li>Mechanism Design</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/car-jack/photo-2.jpg"
+         alt="The assembled scissor jack raised, showing black linkage arms, clear acrylic end blocks, a threaded drive rod and a teal laser-cut base"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The jack at mid-travel. Turning the hex key drives the nut blocks together and
+      the linkage up.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>What it is</h2>
+    <p>A scissor jack converts rotation of a lead screw into vertical lift through a four-bar
+      linkage, multiplying force as the linkage approaches horizontal. Building one is a good
+      machining project precisely because it is unforgiving: six pin joints have to be
+      concentric, both nut blocks have to be tapped on the same axis, and the linkage binds if
+      any of them is off.</p>
+
+    <h2>Processes</h2>
+    <p>The build spans four machines, chosen per part rather than by convenience:</p>
+    <ul>
+      <li><strong>CNC mill</strong> — acrylic block machined down to the nut blocks. I designed
+        the parts, wrote the G-code, and cut them.</li>
+      <li><strong>Bandsaw</strong> — stock acrylic cut to rough size before milling.</li>
+      <li><strong>Drill press</strong> — pin holes, where concentricity across the stack is what
+        decides whether the mechanism moves freely.</li>
+      <li><strong>Laser cutter</strong> — the base plate.</li>
+    </ul>
+    <p>The linkage arms are printed; the clear blocks and base are acrylic, which has the useful
+      property of showing you exactly how the thread engages.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/car-jack/photo-1.jpg" alt="The jack at low height, nearly collapsed"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Collapsed — maximum mechanical advantage, minimum travel per turn.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/car-jack/photo-4.jpg" alt="The jack raised near its maximum height"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Near full extension, where the linkage angle steepens and lift per turn
+        rises.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/car-jack/photo-3.jpg"
+         alt="Three-quarter view of the jack showing the drive rod passing through both acrylic nut blocks"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The drive rod through both nut blocks. Alignment here is what the whole build
+      turns on.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Why acrylic</h2>
+    <p>Aluminum would be the obvious choice for nut blocks carrying thread load, and in a jack
+      meant to lift anything it would be the right one. Acrylic was chosen because it machines
+      cleanly at this scale and because it is transparent &mdash; you can watch the thread
+      engage the block through the wall of the part, which turns an invisible mechanism into
+      something you can inspect while it runs. For a learning build that visibility is worth more
+      than the strength.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>Introduction to Machining</dd></div>
+    <div><dt>Processes</dt><dd>CNC mill, bandsaw, drill press, laser cutter</dd></div>
+    <div><dt>Materials</dt><dd>Acrylic, PLA, threaded steel rod</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

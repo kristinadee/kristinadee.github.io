@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cryotherapy heat transfer review — Kristina Isabella Dee</title>
+<meta name="description" content="A review of the heat transfer mechanisms underlying clinical cryotherapy, from the Pennes bioheat equation to latent heat in freezing tissue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Cryotherapy as a heat transfer problem</h1>
+    <p class="subtitle">A review paper on what actually governs clinical cold therapy — and why
+      living tissue fights back against being cooled.</p>
+    <ul class="tags"><li>Heat Transfer</li><li>Bioheat</li><li>Medical</li><li>Literature Review</li></ul>
+  </header>
+
+  <div class="prose">
+    <h2>Scope</h2>
+    <p>This is a literature review, not an analysis — no model was built and no experiment run.
+      It is here because the physics is directly relevant to medical device work, and because
+      reading a field carefully is its own skill.</p>
+
+    <h2>The argument</h2>
+    <p>Cryotherapy covers a wide clinical range — ice packs, cold-water immersion, whole-body
+      chambers at &minus;110 to &minus;160&nbsp;&deg;C, and cryosurgical probes circulating liquid
+      nitrogen at &minus;196&nbsp;&deg;C. The paper&rsquo;s organizing claim is that all of these
+      are the same problem: controlled removal of heat, through conduction at the
+      instrument&ndash;tissue interface and convection between the body and its surroundings.</p>
+    <p>What makes biological tissue a harder problem than a homogeneous solid is that it heats
+      itself from within. Blood perfusion delivers warm arterial blood into the cooled region and
+      works against the applied cooling, while metabolism adds its own source term. The Pennes
+      bioheat equation captures both, and it is what determines how deeply and how quickly a
+      temperature drop actually penetrates.</p>
+    <p>Phase change adds the second complication. As tissue water freezes it releases latent
+      heat, which temporarily stalls the temperature drop at the freezing front. For cryosurgery
+      this is not a detail — the propagation of the ice front through tissue <em>is</em> the
+      mechanism of cell destruction, so predicting the lethal zone depends on modeling that
+      release correctly.</p>
+
+    <h2>Where it points</h2>
+    <p>The review closes on improvements to cryotherapeutic delivery, including reducing device
+      size and energy demand and using phase-change materials to buffer temperature swings during
+      treatment.</p>
+
+    <h2>Why it&rsquo;s here</h2>
+    <p>Cryoablation, cryosurgery and the thermal design of any cooled instrument all rest on the
+      same two complications &mdash; perfusion fighting the applied cooling, and latent heat
+      stalling the freezing front. Understanding them is a prerequisite for designing a device
+      that has to put a controlled thermal dose into living tissue, which is directly adjacent to
+      the modeling work I want to do.</p>
+  </div>
+
+  <p><a class="button" href="../assets/docs/cryotherapy-heat-transfer-review.pdf">Full paper (PDF)</a></p>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>MECE E3311 Heat Transfer</dd></div>
+    <div><dt>Dates</dt><dd>Spring 2026</dd></div>
+    <div><dt>Team</dt><dd>6 people</dd></div>
+    <div><dt>Type</dt><dd>Literature review</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

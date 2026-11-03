@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FEA studies — Kristina Isabella Dee</title>
+<meta name="description" content="Three finite element studies: stress concentration with mesh convergence, an interference fit, and a contact analysis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>FEA studies</h1>
+    <p class="subtitle">Three structural analyses from coursework — a stress concentration, an
+      interference fit, and a contact problem — each run as a verification exercise rather than a
+      single answer.</p>
+    <ul class="tags"><li>FEA</li><li>SolidWorks Simulation</li><li>Contact Mechanics</li><li>Mesh Convergence</li></ul>
+  </header>
+
+  <h2>Stress concentration in a notched bar</h2>
+
+  <figure>
+    <img src="../assets/fea-studies/notched-mesh-series.jpg"
+         alt="Four von Mises stress plots of the same notched bar at draft, coarse, default and fine mesh densities"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The same bar at four mesh densities. Peak von Mises stress climbs from 15,402 to
+      24,480&nbsp;psi as elements get smaller.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>An axially loaded bar with a machined notch, meshed four ways to see how the reported peak
+      stress depends on discretization. The stress contours look almost identical across all
+      four — the qualitative answer is stable from the first run — but the number at the notch
+      root changes by nearly 60% between the draft and fine meshes.</p>
+    <p>That gap is the point of the exercise. A stress concentration is where a coarse mesh is
+      least trustworthy, and the convergence trend is still rising at the finest mesh rather than
+      flattening, so this solution is not grid independent. Quoting the fine-mesh number as
+      <em>the</em> peak stress would be reporting the mesh rather than the part. Against a
+      50,763&nbsp;psi yield strength all four results sit well inside the elastic range, so the
+      design conclusion survives the uncertainty — but that is a separate claim from the stress
+      being converged.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/fea-studies/notched-convergence.png" alt="Plot of maximum axial stress against number of nodes, still trending upward at 80,000 nodes"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Peak stress against node count — still climbing, not converged.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/fea-studies/notched-displacement.png" alt="Contour plot of axial displacement along the notched bar"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Axial displacement, showing the uniform gradient away from the notch.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Interference fit: wheel and shaft</h2>
+
+  <figure>
+    <img src="../assets/fea-studies/forcefit-2.png"
+         alt="Von Mises stress distribution through a sectioned wheel hub press-fitted onto a shaft"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Stress through the hub under interference. The load here comes from geometry —
+      the parts overlap before the solve begins.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>A press fit between a wheel hub and its shaft, where the interference itself generates the
+      load. The useful output is the contact pressure at the interface, which sets both the
+      torque the joint can carry and the hoop stress the hub has to survive during assembly.</p>
+    <p>The contours show where that pressure concentrates: highest at the bore and falling off
+      through the hub wall, with the hoop stress distributed around the rim rather than
+      localized. That distribution is the thing a bonded-contact assumption would miss
+      entirely.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/fea-studies/forcefit-1.png" alt="Sectioned view of the wheel shaft assembly stress distribution"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Sectioned assembly.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/fea-studies/forcefit-3.png" alt="Stress distribution through the full wheel showing the hoop stress pattern"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Hoop stress through the wheel body.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Contact analysis: trunnion and pin</h2>
+
+  <figure>
+    <img src="../assets/fea-studies/trunion-vonmises.png"
+         alt="Von Mises stress on a trunnion and pin assembly under load, with the deformation scaled up"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Trunnion under load, deformation scaled 2,646&times;. Stress concentrates at the
+      pin bore and the base fillet.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>A pinned trunnion joint, where load transfers through a contact interface rather than a
+      bonded one. The contact pressure distribution — peaking around 1,851&nbsp;psi at the bore —
+      is the result that matters, because it is what a bonded-contact shortcut would get wrong.
+      Peak von Mises reaches 2,718&nbsp;psi against a 34,990&nbsp;psi yield.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/fea-studies/trunion-contact-pressure.png" alt="Contact pressure vectors radiating from the pin bore"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Contact pressure vectors at the bore.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/fea-studies/trunion-isoclip.png" alt="Iso-clipped view isolating the regions above a stress threshold"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Iso-clipping isolates the volume above threshold, separating real load paths
+        from surface artifacts.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>A note on these</h2>
+    <p>These are course exercises rather than design studies, and they are here to show method
+      rather than outcome &mdash; how the mesh was chosen, what the load path is, and whether the
+      answer can be trusted. The common thread across all three is treating a result as a claim
+      that has to survive a convergence check, not as a number the solver handed over.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Work</dt><dd>Individual</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks Simulation</dd></div>
+    <div><dt>Studies</dt><dd>Static, interference fit, contact</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

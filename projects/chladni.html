@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chladni plate modal characterization — Kristina Isabella Dee</title>
+<meta name="description" content="Frequency-domain characterization of vibrational modes in a center-clamped aluminum plate, comparing FFT-derived resonances against thin-plate theory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Chladni patterns: modal characterization of a clamped plate</h1>
+    <p class="subtitle">Driving an aluminum plate through resonance, reading the modes two ways —
+      from sand on the surface and from FFT of a piezoelectric sensor — and finding where
+      thin-plate theory stops describing a real clamped plate.</p>
+    <ul class="tags"><li>Experimental Methods</li><li>Vibrations</li><li>Signal Processing</li><li>FFT</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/chladni/modes-420-583.jpg"
+         alt="Two Chladni nodal patterns in sand on a dark plate, at 420 Hz and 583 Hz drive, with theoretical nodal lines overlaid in red"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Nodal patterns at 420&nbsp;Hz and 583&nbsp;Hz, with the theoretical nodal lines
+      overlaid. Sand collects where transverse motion goes to zero.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Problem</h2>
+    <p>A driven elastic plate has resonances where it stores vibrational energy efficiently, and
+      at each one the surface settles into a standing wave with stationary nodal lines. Classical
+      thin-plate theory predicts those frequencies and mode shapes from geometry and material
+      properties alone — under assumptions that a real plate violates. This experiment set out to
+      measure the modes, compare them against theory, and quantify where the assumptions break
+      down.</p>
+
+    <h2>Setup</h2>
+    <p>A square 6061-T6 aluminum plate, 0.203&nbsp;m on a side and 3.18&nbsp;mm thick, bolted at
+      its center to a speaker coil through a 3D-printed coupling cylinder. The center clamp
+      enforces a local zero-displacement condition and mechanically couples the plate to the
+      driver. Fine sand spread across the top surface makes the nodal pattern visible; a
+      piezoelectric sensor on the underside produces a voltage proportional to local strain,
+      recorded through CoolTerm for frequency-domain analysis.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/chladni/setup-schematic.png" alt="Side view of the plate clamped above the speaker driver on the bench"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>The plate clamped above the driver.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/chladni/clamp-and-driver.jpg" alt="Close-up of the center bolt clamp on the plate surface, and the 3D-printed cylinder coupling the plate to the speaker coil"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Center clamp and the printed coupling to the coil.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <p>With E = 6.90 &times; 10<sup>10</sup>&nbsp;Pa, &rho; = 2700&nbsp;kg/m<sup>3</sup> and
+      &nu; = 0.33, the flexural rigidity works out to 2.06 &times; 10<sup>2</sup>&nbsp;N&middot;m
+      and the frequency constant to 41.8&nbsp;Hz, giving an uncorrected fundamental of
+      83.6&nbsp;Hz. The measured fundamental was 98&nbsp;Hz, so we introduced an empirical
+      correction factor of 1.17 to account for the center clamp and applied it to the
+      higher-order predictions.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/chladni/fft-spectra.png"
+         alt="FFT magnitude spectra for 238 Hz and 420 Hz drive frequencies, with the drive frequency marked by a dashed line"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>FFT magnitude spectra. At some drives the dominant peak sits on the driving
+      frequency — near-ideal forced response. At others the strongest peak appears at a nearby
+      structural resonance or a harmonic instead.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Results</h2>
+    <p>Six modes were identified by counting nodal lines in the sand pattern and matching against
+      theoretical mode shapes.</p>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Theoretical (Hz)</th><th>Driving (Hz)</th><th>FFT-derived (Hz)</th><th>Mode (m,n)</th><th>Error</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>98</td><td>98</td><td>84.9</td><td>(1,1)</td><td>13.4%</td></tr>
+        <tr><td>245</td><td>238</td><td>180.7</td><td>(1,2) / (2,1)</td><td>26.2%</td></tr>
+        <tr><td>392</td><td>420</td><td>425.8</td><td>(2,2)</td><td>8.6%</td></tr>
+        <tr><td>637</td><td>583</td><td>645.8</td><td>(2,3) / (3,2)</td><td>1.4%</td></tr>
+        <tr><td>980</td><td>950</td><td>717.7</td><td>(2,4) / (4,2)</td><td>26.8%</td></tr>
+        <tr><td>1225</td><td>1172</td><td>1140.3</td><td>(3,4) / (4,3)</td><td>6.9%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose">
+    <p>Agreement is uneven in a way worth taking seriously: 1.4% at the (2,3) mode and 26.8% at
+      (2,4). The two worst cases are both ones where the FFT-derived frequency falls well below
+      both the theoretical and the driving frequency, which suggests the dominant spectral peak
+      belongs to a nearby structural resonance of the coupled plate-and-driver system rather than
+      the plate mode we were trying to excite.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/chladni/modes-98-238.png" alt="Nodal patterns at 98 Hz and 238 Hz drive"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>98&nbsp;Hz and 238&nbsp;Hz — the low-order modes.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/chladni/modes-950-1172.png" alt="Nodal patterns at 950 Hz and 1172 Hz drive"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>950&nbsp;Hz and 1172&nbsp;Hz — pattern complexity rises with mode order.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Where the error comes from</h2>
+    <p>Finite FFT resolution and background noise set a floor, but the larger contributors are
+      physical. Driving through a bolted center clamp introduces nonlinear dynamics and local
+      curvature near the clamp, and the clamp itself transmits forces the thin-plate model does
+      not include. Waveform distortion and sensor saturation show up as harmonics in the spectra.
+      And the empirical correction factor is fit to the fundamental, so it carries whatever that
+      single measurement got wrong into every higher-order prediction.</p>
+
+    <h2>What I&rsquo;d do next</h2>
+    <p>Replacing the single empirical correction with a model that treats the clamp as a boundary
+      condition rather than a scalar fudge would be the biggest improvement. Beyond that, driving
+      the plate without direct contact would separate the plate&rsquo;s modes from the coupled
+      system&rsquo;s, which is what the two 26% errors appear to be measuring.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>ME Laboratory, Mechanics &amp; Applied Physics</dd></div>
+    <div><dt>Team</dt><dd>Kristina Dee, Tira Zhao</dd></div>
+    <div><dt>Specimen</dt><dd>6061-T6 Al, 203 × 203 × 3.18 mm</dd></div>
+    <div><dt>Tools</dt><dd>Piezoelectric sensor, CoolTerm, FFT analysis</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

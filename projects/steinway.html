@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supertall tower aerodynamics — Kristina Isabella Dee</title>
+<meta name="description" content="Analytical study of wind loading and vortex-induced vibration on a simplified model of a superslim Manhattan tower.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Supertall tower aerodynamics</h1>
+    <p class="subtitle">Why a 1,400-foot building a tenth as wide as it is tall needs a damper the
+      size of a room — worked out analytically on a simplified model of Steinway Tower.</p>
+    <ul class="tags"><li>Fluid Mechanics</li><li>Vortex Shedding</li><li>Structural Dynamics</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/steinway/tower-section.png"
+         alt="Structural section through Steinway Tower, labeled with the steel truss cap, tuned mass damper, concrete belt walls, shear wall core, outrigger floors and wind breaks"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The tower in section. Almost every labeled feature — the damper, the wind breaks,
+      the open mechanical floors — exists to manage wind rather than carry gravity load.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Problem</h2>
+    <p>Manhattan has filled with supertall buildings, between 300 and 599&nbsp;m, and many of them
+      are also superslim — width-to-height ratios of 1:10 or 1:12, and newer ones thinner still.
+      At those proportions, wind governs the design. A slender tower is a bluff body shedding
+      vortices in an alternating pattern, and if the shedding frequency approaches a natural
+      frequency of the structure, the building is driven into resonance across its whole height.
+      The failure mode is rarely collapse; it is occupants who feel the building move.</p>
+
+    <h2>Approach</h2>
+    <p>We reduced the tower to a simplified triangular-prism body and worked the loading
+      analytically: a wind velocity profile varying with height, the resulting drag distribution,
+      and the shedding frequency from the Strouhal relation compared against the structure&rsquo;s
+      natural frequency. The point was to find the mechanism and its order of magnitude, not to
+      resolve the flow.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/steinway/damper-diagram.png"
+         alt="Diagram of the tower showing tuned mass dampers at the top and five open drum floors distributed down the height"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The built solutions stack: a tuned mass damper at the crown, open drum floors
+      that let wind pass instead of pushing, and outriggers coupling the core to the perimeter.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>What came out of it</h2>
+    <p>The analysis explains why the real building looks the way it does. Narrow faces turned into
+      the prevailing wind reduce the projected area in the sensitive direction. Open mechanical
+      floors break up the coherent airflow that organized shedding depends on, which detunes the
+      excitation rather than resisting it. The tuned mass damper at the top adds damping at the
+      frequency that matters. Outriggers and belt walls raise lateral stiffness, moving the
+      natural frequency away from the shedding band.</p>
+    <p>Taken together these are three different strategies against one problem — change the
+      forcing, change the structure&rsquo;s response, or dissipate the energy — and a tower this
+      slender needs all three.</p>
+
+    <h2>Scope, honestly</h2>
+    <p>This is an analytical study, not a CFD one. There is no meshed model and no simulated flow
+      field; the numbers come from hand calculations on a simplified geometry with standard
+      empirical correlations. Treated as what it is, it is a clean exercise in identifying the
+      governing mechanism and estimating it. Treated as CFD, it would be oversold.</p>
+
+    <h2>What I&rsquo;d do next</h2>
+    <p>The analysis produces a velocity profile and a deflection estimate at every height, but
+      the report presents them as numbers rather than curves; plotted against height, the
+      argument would land in a glance. The natural extension is a transient CFD case around the
+      prism section, which would return an actual shedding frequency to check the Strouhal
+      estimate against instead of relying on the correlation alone.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>MECE E3100 Introduction to Mechanics of Fluids</dd></div>
+    <div><dt>Team</dt><dd>3 people</dd></div>
+    <div><dt>Subject</dt><dd>Steinway Tower, 111 West 57th St</dd></div>
+    <div><dt>Method</dt><dd>Analytical, simplified geometry</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

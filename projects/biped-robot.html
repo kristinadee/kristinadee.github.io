@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bi-pedal jumping robot — Kristina Isabella Dee</title>
+<meta name="description" content="Concept sketches through two full CAD iterations of a spring-assisted bi-pedal jumping robot, with power, weight and torque estimates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Bi-pedal jumping robot</h1>
+    <p class="subtitle">From hand sketches to two complete CAD iterations. The second redesign
+      added 0.4&nbsp;kg of actuation and doubled the design speed, because springs alone
+      can&rsquo;t jump.</p>
+    <ul class="tags"><li>Robotics</li><li>SolidWorks</li><li>Mechanism Design</li><li>Rendering</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/biped-robot/v2-front.jpg"
+         alt="Photorealistic render of the final bi-pedal robot: a transparent domed chassis containing electronics, a rotating plate below it, and two three-jointed legs ending in spring-loaded jumping shoes"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The final design. Eight servos: three per leg at hip, knee and ankle, plus two
+      driving the rotating plate that twists the legs under the body.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>The brief</h2>
+    <p>Design a bi-pedal robot capable of running or jumping, carrying its own compute, power and
+      sensing, and built from organic rather than boxy geometry. The work ran from concept
+      sketches through to a fully specified CAD assembly with a bill of materials.</p>
+
+    <h2>Three concepts</h2>
+    <p>I started with three directions, each sketched by hand with its own power budget, mass
+      breakdown and torque estimate, so the comparison was quantitative rather than aesthetic.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/biped-robot/sketch-velociraptor.jpg"
+         alt="Hand sketch of a velociraptor-inspired running robot with dimensioned side view, control box close-up, and handwritten power, weight and torque calculations"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Concept 1, a velociraptor-inspired runner with spring-loaded legs and a
+      counterbalancing tail. Heaviest of the three at an estimated 3.98&nbsp;kg, 12&nbsp;W, and
+      0.155&nbsp;N&middot;m peak torque per leg.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/biped-robot/sketch-bounce.jpg"
+         alt="Hand sketch of a spherical jumping robot with elastic stabilizing cables, dimensioned front view, and handwritten weight and torque calculations"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Concept 2, a spherical body on spring-aided rotating jumping shoes. At an
+      estimated 1.62&nbsp;kg it was by far the lightest, and the low inertia put peak torque an
+      order of magnitude below Concept 1.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/biped-robot/sketch-lamp.jpg"
+         alt="Hand sketch of a single-legged balancing robot shaped like a desk lamp, with dimensioned views and handwritten weight and torque calculations"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Concept 3, a single-legged balancer. Mechanically the most interesting and the
+      least likely to stay upright — 2.7&nbsp;kg on one foot, with balance delegated entirely to
+      control.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>Concept 2 won on the numbers. The lowest mass gave the best thrust-to-weight for jumping,
+      the spherical body kept the centre of mass low and central, and two legs avoided the
+      balancing problem that Concept 3 would have spent the whole project solving.</p>
+
+    <h2>First iteration</h2>
+    <p>The first CAD build took the spherical concept seriously. A transparent outer shell
+      carries two internal plates — battery and controller on the lower level, Raspberry Pi, DC
+      converter and IMU on the upper — and eight elastic cables suspend the inner sphere inside
+      the outer one.</p>
+    <p>That cable suspension came from building stabilization, specifically the tuned mass damper
+      hung inside Taipei 101. The idea was that an inner mass decoupled from the shell would damp
+      landing shock the same way the damper absorbs seismic and wind energy, rather than
+      transmitting every impact straight into the electronics.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/biped-robot/v1-hero.jpg"
+         alt="Render of the first iteration: a transparent sphere between two large ring-shaped spring wheels, with short legs below"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>First iteration. Six servos — two per front leg, one per rotating jumping
+      apparatus. Estimated 2.1&nbsp;kg and 0.2&nbsp;m/s.</figcaption>
+  </figure>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/biped-robot/v1-cables.jpg"
+           alt="Render showing the eight elastic cables connecting the inner and outer spherical bodies"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Eight cables suspending the inner sphere.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/biped-robot/v1-internals.jpg"
+           alt="Close-up render of the two internal plates carrying the battery, controller, Raspberry Pi, DC converter and IMU"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Two internal levels, stacked to keep the mass centred.</figcaption>
+    </figure>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/biped-robot/v1-exploded-a.jpg"
+           alt="Exploded view of the first iteration showing the electronics stack separated from the chassis"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Electronics stack, exploded.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/biped-robot/v1-exploded-b.jpg"
+           alt="Exploded view showing the spring wheels and jumping apparatus separating from the spherical body"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Jumping apparatus and shell.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Why it was wrong</h2>
+    <p>The first design rotated the jumping apparatus and nothing else. The legs held a fixed
+      geometry while spring-loaded shoes spun beneath them, and the assumption was that stored
+      spring energy would be enough to leave the ground.</p>
+    <p>It is not. A spring only returns energy that has been put into it, and compressing it
+      requires the robot to crouch and then extend — to bend at the knee and push. Without
+      actuated joints there is no mechanism to load the spring in the first place, so the shoes
+      would have rotated against the ground without ever generating lift. The design could roll;
+      it could not jump, which was the one thing it was for.</p>
+
+    <h2>Second iteration</h2>
+    <p>The redesign gave each leg three motor-driven joints standing in for hip, knee and ankle,
+      so the robot can crouch, load the springs and extend through a real push-off. The sphere
+      became a semi-sphere to cut chassis mass back toward where it started, and the cable
+      suspension gave way to rigid bracketing with spacers, through-holes and threaded inserts —
+      once the legs absorb landing loads through articulation, the shell no longer has to.</p>
+    <p>A rotating plate between the chassis and the legs was added last, representing the twist
+      of a spine and hips. It swings the legs under the body to redirect travel and shift weight
+      distribution mid-stride, which is how a runner changes direction without stopping.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/biped-robot/v2-hero.jpg"
+           alt="Three-quarter render of the final robot with legs extended and jumping shoes visible"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Final design, three-quarter view.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/biped-robot/v2-pose-b.jpg"
+           alt="Second pose of the final robot showing the leg articulation from a different angle"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Second pose. Three joints per leg give a full crouch-and-extend cycle.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/biped-robot/v2-rotating-plate.jpg"
+         alt="Labeled diagram of the drivetrain: main body plate, two rotating servo motors, rotating plate, legs, and jumping shoes"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The load path, top to bottom: chassis plate, two rotating servos, rotating plate,
+      legs, jumping shoes.</figcaption>
+  </figure>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/biped-robot/v2-shoe-closeup.jpg"
+           alt="Close-up render of a jumping shoe showing the coil spring between the sole and the ankle mount"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Jumping shoe, specified in TPU so the sole flexes rather than fractures on
+        landing.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/biped-robot/v2-hip-bracket.jpg"
+           alt="Close-up render of the bracketing system attaching the hip motors to the rotating plate"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Hip bracketing onto the rotating plate — the joint carrying the highest
+        moment.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/biped-robot/v2-chassis.jpg"
+         alt="Cutaway render of the chassis interior showing the battery, controller, Raspberry Pi, DC converter and IMU on two plates separated by spacers"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Chassis interior. Battery on the lower plate, controller, Raspberry Pi, DC
+      converter and IMU above, every component on spacers and screwed into threaded inserts.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>What the redesign cost and bought</h2>
+    <p>Two more servos and the articulated legs added 0.4&nbsp;kg, a 19% increase. Design speed
+      went from 0.2 to 0.4&nbsp;m/s. Spending a fifth of the mass budget to double the speed is a
+      good trade, and more to the point the second design can perform the motion the first one
+      was named for.</p>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th></th><th>First iteration</th><th>Second iteration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Servo motors</td><td>6</td><td>8</td></tr>
+        <tr><td>Joints per leg</td><td>0 (rigid)</td><td>3</td></tr>
+        <tr><td>Mass</td><td>2.1 kg</td><td>2.5 kg</td></tr>
+        <tr><td>Design speed</td><td>0.2 m/s</td><td>0.4 m/s</td></tr>
+        <tr><td>Body</td><td>Double sphere, cable-suspended</td><td>Semi-sphere, rigid bracketing</td></tr>
+        <tr><td>Directional control</td><td>None</td><td>Rotating plate</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure>
+    <img src="../assets/biped-robot/v2-dimensions.jpg"
+         alt="Dimensioned drawing of the final robot in frontal, side and perspective views with overall height and width called out"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Final dimensioned views. Roughly 450&nbsp;mm tall and 230&nbsp;mm across,
+      specified down to the bill of materials.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Where it stands</h2>
+    <p>This is a design study, not a built robot. The second iteration is fully modeled, rendered,
+      dimensioned and costed through a bill of materials, with the electronics package resolved
+      down to mounting hardware — but nothing was fabricated, and the speed and mass figures are
+      estimates from the model rather than measurements.</p>
+    <p>The part worth taking from it is the correction between the two iterations. Finding that a
+      jumping robot needs actuated joints before it needs springs, and rebuilding the leg
+      architecture around that, was the real work.</p>
+  </div>
+
+  <p>
+    <a class="button" href="https://www.youtube.com/watch?v=WMCvQCotOPg">Animation</a>
+    <a class="button" href="https://grabcad.com/library/jumping-shoes-1">Jumping shoe on GrabCAD</a>
+  </p>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>MECE 4611</dd></div>
+    <div><dt>Dates</dt><dd>Spring 2025</dd></div>
+    <div><dt>Work</dt><dd>Individual</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks, photorealistic rendering, hand sketching</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

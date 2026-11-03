@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Mouse mechanical calculator — Kristina Isabella Dee</title>
+<meta name="description" content="A fully mechanical arithmetic toy for ages 4 to 7, designed as a closed assembly with no removable parts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Math Mouse</h1>
+    <p class="subtitle">An arithmetic toy for four-to-seven-year-olds that does single-digit
+      addition and subtraction with no electronics and no part a child can remove.</p>
+    <ul class="tags"><li>Mechanism Design</li><li>SolidWorks</li><li>3D Printing</li><li>Design for Safety</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/math-mouse/render-exploded.png"
+         alt="Rendered assembly of the stacked disk calculator beside an exploded view showing the central shaft, four disks, two one-way bearings and end caps"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Four stacked disks on a fixed central shaft. Two one-way bearings are what make
+      the arithmetic work.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Problem</h2>
+    <p>Children typically grasp addition and subtraction between pre-kindergarten and early first
+      grade, and the toys aimed at that window each give something up. Counting blocks and rods
+      build number sense but rely on separate pieces that get lost and present a choking hazard.
+      Digital toys are interactive but add cost, electronics and batteries while discouraging
+      fine motor development. Number lines and abacuses are self-contained but are really tools
+      rather than toys — they do not guide a child through setting up a problem and getting an
+      answer.</p>
+    <p>We wanted the self-contained safety of an abacus with the guided mechanism of a toy, which
+      set the hard constraint: no small loose parts, nothing removable in the assembled product.</p>
+
+    <h2>How it works</h2>
+    <p>The toy is a 3-inch cylinder of four stacked disks on a fixed central shaft. The caps, the
+      shaft and the equals-sign plate are all fixed to each other, and the tail feature ties that
+      plate to the cap so the whole fixed frame moves as one.</p>
+    <p>Input disk 1 sets the first operand, showing 0 to 5. Input disk 2 sets the second, from
+      &minus;5 to +5. Each input disk connects to the output disk through its own one-way
+      bearing, and the two bearings face opposite directions: disk 1 drives the output only when
+      turned counterclockwise, disk 2 only when turned clockwise. So addition advances the result
+      and subtraction retreats it, both through the same mechanism, and neither input can be
+      dragged backwards when the output turns.</p>
+    <p>Invalid ranges are handled visually rather than mechanically. The output is constrained to
+      0 through 10, and the faces that would show a negative answer are shaded out, which keeps
+      the toy focused on the arithmetic a five-year-old is learning without adding a hard stop
+      that could break.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/math-mouse/drawing-1.png" alt="Section view drawing of the stacked disk assembly on the central shaft"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Section through the stack. Concentric and coincident mates restrict every disk
+        to rotation only.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/math-mouse/drawing-bom.png" alt="Bill of materials table and exploded assembly drawing with balloon callouts"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Ten-item BOM. Everything is printed PLA except the two stock bearings and the
+        steel shaft.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>The decision that mattered</h2>
+    <p>We first tried to 3D-print the one-way bearings, to keep the whole toy printable and the
+      cost near zero. They did not work. The printed bearings wobbled enough that the disks drove
+      each other out of sync, and in a toy whose entire function is that two inputs sum to a
+      correct answer, intermittent engagement is not a cosmetic flaw — it gives the child the
+      wrong number.</p>
+    <p>We switched to stock one-way bearings from McMaster-Carr. That gave up some of the
+      cost-and-reproducibility argument for printing everything, and bought a mechanism that
+      works every time. The rest of the toy stayed PLA, so the design is still cheap to
+      reproduce; precision is now concentrated in the two parts that need it.</p>
+
+    <h2>What&rsquo;s untested</h2>
+    <p>The design is resolved to a buildable bill of materials but has not been put in front of
+      a child, and two questions can only be answered that way. Whether the disks index firmly
+      enough that a four-year-old feels a face land, rather than leaving it halfway between two
+      numbers &mdash; a detent would fix that, at the cost of torque through the bearings. And
+      whether shading the invalid range is enough, or whether a child will turn past it anyway
+      and read a shaded face as an answer. A hard stop would prevent it outright, but adds a part
+      that can break under a determined four-year-old, which is the hazard the whole design was
+      built to avoid.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>Computer Graphics &amp; Design</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks, 3D printing (PLA)</dd></div>
+    <div><dt>Target user</dt><dd>Ages 4–7</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dual-axis solar tracker — Kristina Isabella Dee</title>
+<meta name="description" content="An Arduino-controlled dual-axis solar tracker, redesigned mid-project from continuous tracking to scan-and-sweep control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Dual-axis solar tracker</h1>
+    <p class="subtitle">Built, tested, found unstable, and rebuilt around a different control
+      strategy — the second design aligned to the light source in eight of nine positions.</p>
+    <ul class="tags"><li>Mechatronics</li><li>Arduino</li><li>Controls</li><li>SolidWorks</li><li>3D Printing</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/solar-tracker/apparatus.jpg"
+         alt="The assembled solar tracker on a bench: black printed base and gimbal, solar array on top, photoresistors, and wiring to an Arduino on a breadboard"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>The tracker under test. Four photoresistors sense light; a DC motor drives
+      altitude and a stepper drives azimuth, with about 180&deg; of travel on each.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Problem</h2>
+    <p>A fixed solar panel only reaches peak output when the sun happens to sit normal to its
+      surface. A dual-axis tracker chases that condition continuously, adjusting both altitude
+      and azimuth. The brief was to design, build and evaluate one that stays compact and
+      mechanically stable while covering a wide range of source positions.</p>
+
+    <h2>First design: continuous tracking</h2>
+    <p>The initial system followed the light source in real time, reading the four photoresistors
+      and driving toward the brighter side continuously. It responded quickly, but it was heavy,
+      constrained in its range of motion, and sensitive to sensor noise — small fluctuations in
+      reading translated directly into motion, so the structure oscillated.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/solar-tracker/design-initial.jpg" alt="SolidWorks render of the first tracker design"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Design 1, built around continuous tracking.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/solar-tracker/circuit-diagram.png" alt="Wiring diagram showing stepper motor, DC motor, four photoresistors, Arduino with motor shield and breadboard"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>5&nbsp;V stepper for azimuth, 6&nbsp;V DC motor for altitude, four corner
+        photoresistors, Arduino with motor shield.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Second design: scan and sweep</h2>
+    <p>Rather than tune the noise out of continuous tracking, we changed the control strategy.
+      The revised system sweeps its full range in both axes, records light intensity across the
+      sweep, and then moves once to the position of maximum detected illumination. Decoupling
+      sensing from actuation removed the oscillation entirely, because the structure is no longer
+      reacting to every fluctuation in a reading.</p>
+    <p>The mechanical design was reworked alongside it — lighter structure, better load transfer
+      into the azimuth axis, and a more compact layout.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/solar-tracker/design-revised-a.jpg" alt="Render of the revised gimbal design"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Revised gimbal, lighter and more compact.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/solar-tracker/design-final.jpg" alt="Final render of the complete tracker assembly"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Final assembly as built.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Results</h2>
+    <p>Across nine source positions, the tracker aligned successfully in eight. Peak output was
+      2.65&nbsp;V at an azimuth of 90&deg; and altitude of 75&deg; — close to the geometric
+      optimum, which is the result that says the control logic is doing what it claims.</p>
+    <p>The failure is the informative case. At 15&deg; altitude and 135&deg; azimuth, incident
+      intensity was low enough that the difference between photoresistor readings fell near the
+      noise floor, so the sweep picked a poor maximum. That showed up as tracking error, visible
+      mechanical jitter and reduced output voltage.</p>
+
+    <h2>What I&rsquo;d do next</h2>
+    <p>A higher-torque motor on the altitude axis would cut the jitter, and stiffer structural
+      connections would reduce the vibration that follows each move. The deeper fix for the
+      low-intensity failure is in sensing rather than structure: averaging multiple samples per
+      sweep position, or requiring a minimum contrast between sensors before committing to a
+      move.</p>
+  </div>
+
+  <p><a class="button" href="../assets/docs/solar-tracker-report.pdf">Full report (PDF)</a></p>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>MECE E3028 ME Laboratory II</dd></div>
+    <div><dt>Dates</dt><dd>Spring 2026</dd></div>
+    <div><dt>Team</dt><dd>4 people</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks, Arduino, 3D printing</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

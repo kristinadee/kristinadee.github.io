@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reinforcement learning for building heating control — Kristina Isabella Dee</title>
+<meta name="description" content="Soft Actor-Critic agents controlling building heating in FMU co-simulation, with fixed and occupancy-scheduled setpoints.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>Reinforcement learning for building heating control</h1>
+    <p class="subtitle">Teaching a Soft Actor-Critic agent to hold a comfort band in a simulated
+      building — and to stop slamming the heater on and off while doing it.</p>
+    <ul class="tags"><li>Reinforcement Learning</li><li>Controls</li><li>Python</li><li>PyTorch</li><li>FMU Co-simulation</li></ul>
+  </header>
+
+  <figure>
+    <img src="../assets/rl-hvac/fixed-setpoint.png"
+         alt="Four plots for the fixed setpoint agent: training reward converging, training temperature trajectories, test indoor and outdoor temperature over 30 days, and test heater power"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Fixed 20&nbsp;&deg;C setpoint, evaluated over 30 days. Indoor temperature holds
+      flat against an outdoor swing from &minus;12 to +12&nbsp;&deg;C, and heater power modulates
+      continuously rather than switching on and off.</figcaption>
+  </figure>
+
+  <div class="prose">
+
+    <h2>Problem</h2>
+    <p>A heating controller has two jobs that pull against each other: keep occupants in a comfort
+      band, and use as little energy as possible doing it. Classical rule-based control handles
+      this with thresholds, which produces the familiar bang-bang behavior — full power, off,
+      full power. Reinforcement learning can in principle find a smoother policy, but a
+      continuous action space and a slow physical plant make it easy to train an agent that
+      either oscillates or quietly gives up on comfort to save energy.</p>
+
+    <h2>Approach</h2>
+    <p>I implemented Soft Actor-Critic in PyTorch against a Gym environment wrapping a building
+      FMU exported from OpenModelica. SAC optimizes an entropy-regularized objective, which keeps
+      the policy exploring instead of collapsing early onto a mediocre strategy, and the
+      temperature parameter that weights entropy is itself learned against a target.</p>
+    <p>The architecture is a twin-critic setup — two Q-networks, with the minimum taken when
+      forming the target — to blunt the overestimation bias a single critic develops. Two
+      stability measures borrowed from TD3 matter more than anything else here: target-policy
+      smoothing, which adds clipped noise to the target action so the critic cannot exploit a
+      sharp peak in its own estimate, and delayed actor updates, which let the critics settle
+      before the policy chases them. Together they are what turned erratic on/off heating into
+      smooth modulation.</p>
+  </div>
+
+  <div class="prose">
+    <h3>Making the FMU cooperate</h3>
+    <p>The agent acts once a minute, but stepping the FMU a full 60 seconds at a time triggered
+      numerical instability and temperature-excess errors inside the solver. I added a
+      sub-stepping layer that breaks each control step into 2-second communication steps while
+      holding the action constant, which kept the co-simulation stable without changing the
+      control interval the agent sees.</p>
+
+    <h3>Fixed and scheduled setpoints</h3>
+    <p>I trained two agents. The first holds a constant 20&nbsp;&deg;C. The second follows an
+      occupancy schedule that drops to 15&nbsp;&deg;C when the building is empty and returns to
+      20&nbsp;&deg;C when it is occupied.</p>
+    <p>The scheduled agent initially failed in an interesting way. With only indoor and outdoor
+      temperature in its observation, it was time-blind: it could see that it had missed a
+      setpoint change, but never that one was coming, so it always reacted late. Expanding the
+      observation to five dimensions — adding the current setpoint, the next setpoint, and a
+      normalized time of day — let it anticipate the transition instead of chasing it.</p>
+    <p>A second failure mode was the agent under-heating to minimize the energy penalty. I
+      handled that with progressive energy-factor scheduling: train comfort tracking first with
+      the energy penalty off, then introduce it gradually once the policy can already hold the
+      band.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/rl-hvac/moving-setpoint.png"
+         alt="Four plots for the occupancy-scheduled agent: training reward, training trajectories, test temperatures tracking a 15 to 20 degree schedule, and test heater power showing sharp demand spikes at each transition"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Occupancy schedule, 15&nbsp;&deg;C unoccupied and 20&nbsp;&deg;C occupied. The
+      agent tracks each transition, and the power trace shows the cost of doing so — a
+      full-power burst at every recovery.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Results</h2>
+    <p>Both agents converge within 50 to 75 episodes and hold setpoint to within
+      &plusmn;0.5&nbsp;&deg;C, across weather ranging from a January outdoor low near
+      &minus;12&nbsp;&deg;C to mild spring conditions, without retraining per season. Against PPO
+      and DQN baselines, SAC reached that accuracy faster and held it more steadily &mdash; the
+      entropy term is what keeps the policy exploring long enough to find smooth modulation
+      rather than settling early on switching behavior.</p>
+    <p>The contrast between the two power traces is the more interesting finding. The
+      fixed-setpoint agent modulates under about 900&nbsp;W continuously. The scheduled agent
+      spends most of its time lower, but every return to occupancy costs a full-power recovery
+      burst &mdash; the energy saved by setting back is partly spent buying the building back up
+      again. Whether a setback schedule is worth running at all depends on how long the
+      unoccupied period is relative to that recovery cost.</p>
+
+    <h2>What these runs do and don&rsquo;t show</h2>
+    <p>The plots on this page characterize the two SAC agents themselves; the baseline
+      comparison was run separately and isn&rsquo;t reproduced here. The seasonal energy totals
+      from these runs are also not a performance claim &mdash; February and June differ mostly
+      because the weather differs, and reading them as a controller result would be a mistake.</p>
+    <p>Everything here is also simulation. Sim-to-real transfer onto the lab&rsquo;s
+      1,500&ndash;2,000 sq ft configurable building energy testbed is what tells you whether the
+      policy survives contact with a real plant, and that is where the hyperparameter sweeps
+      across learning rate, entropy temperature, discount factor and replay buffer earn their
+      keep.</p>
+  </div>
+
+  <h2>Code</h2>
+  <div class="prose">
+    <p>Both agents, including the environment wrapper, reward shaping, sub-stepping and the
+      training and evaluation loops.</p>
+  </div>
+  <p>
+    <a class="button" href="../code/rl-hvac/sac_fixed_setpoint.py">sac_fixed_setpoint.py</a>
+    <a class="button" href="../code/rl-hvac/sac_moving_setpoint.py">sac_moving_setpoint.py</a>
+  </p>
+
+  <dl class="title-block">
+    <div><dt>Lab</dt><dd>Building Energy Research Lab</dd></div>
+    <div><dt>Dates</dt><dd>Sep 2024 – Sep 2025</dd></div>
+    <div><dt>Tools</dt><dd>Python, PyTorch, FMPy, OpenModelica, Dymola</dd></div>
+    <div><dt>Algorithm</dt><dd>Soft Actor-Critic with TD3 stabilization</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>

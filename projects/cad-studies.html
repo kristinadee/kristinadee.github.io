@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAD and drawing studies — Kristina Isabella Dee</title>
+<meta name="description" content="Surface modeling, a two-part bike attachment with a full drawing package, and a weight-reduced robot femur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="name" href="../index.html">Kristina Isabella Dee</a>
+  <a href="../projects.html">Projects</a>
+  <a href="../about.html">About</a>
+  <a href="../assets/docs/resume.pdf">Résumé</a>
+</nav>
+
+<main class="wrap">
+<article>
+
+  <header>
+    <h1>CAD and drawing studies</h1>
+    <p class="subtitle">Three exercises in modeling discipline: complex surfacing, a complete
+      drawing package, and designing a part down to weight.</p>
+    <ul class="tags"><li>SolidWorks</li><li>Surface Modeling</li><li>GD&amp;T</li><li>Technical Drawing</li></ul>
+  </header>
+
+  <h2>Seaplane: surface modeling</h2>
+
+  <figure>
+    <img src="../assets/seaplane/view-3.jpg"
+         alt="Rendered seaplane fuselage and wing, modeled as continuous lofted surfaces"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Fuselage and wing as a single continuous surface set — the exercise is in the
+      tangency, not the silhouette.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>A multi-body surfacing exercise. Lofted fuselage and wing surfaces have to meet with
+      continuity at every junction, which is a different discipline from solid modeling: the
+      build order and the guide curves determine whether the result is a clean surface or a
+      visible crease that no amount of filleting rescues.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/seaplane/view-1.jpg" alt="Close-up of the modeled propeller and radial engine"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Propeller and radial engine.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/seaplane/view-5.jpg" alt="Cutaway showing the internal structure inside the pontoon assembly"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Pontoon assembly with internal structure.</figcaption>
+    </figure>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/seaplane/view-4.jpg" alt="Alternative colored view of the full seaplane assembly"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Full assembly.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/seaplane/view-6.jpg" alt="Isolated pontoons and their connecting struts"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Pontoons and struts isolated.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Bike-device attachment</h2>
+
+  <figure>
+    <img src="../assets/bike-attachment/exploded.png"
+         alt="Exploded isometric view of the handlebar clamp, phone holder, hex head screw and locknut"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Four parts: a handlebar clamp, a device holder, and the fastener pair that joins
+      them.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>A two-part handlebar mount with a complete release package — fully dimensioned part
+      drawings, an assembly drawing with balloon callouts, and a bill of materials that specifies
+      the purchased fasteners by McMaster part number rather than describing them.</p>
+    <p>Both structural parts are 6061 aluminum. The clamp wraps past 180&deg; so it captures the
+      bar before the screw is tightened, and the screw works in tension across the split rather
+      than relying on friction alone.</p>
+  </div>
+
+  <div class="figure-pair">
+    <figure>
+      <img src="../assets/bike-attachment/drawing-attachment.png" alt="Dimensioned drawing of the handlebar clamp with four views"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Clamp, fully dimensioned with a fillet note covering the unspecified radii.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/bike-attachment/drawing-partholder.png" alt="Dimensioned drawing of the device holder"
+           onerror="this.src='../assets/placeholder.svg'">
+      <figcaption>Holder. The bottom view is used to dimension the hole, and the drawing says
+        so.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/bike-attachment/assembly-bom.jpg"
+         alt="Assembly drawing with numbered balloons and a four-item bill of materials table"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Assembly drawing and BOM, with purchased parts called out by part number.</figcaption>
+  </figure>
+
+  <h2>Bi-pedal robot femur</h2>
+
+  <figure>
+    <img src="../assets/robot-femur/drawing.png"
+         alt="Dimensioned drawing of a truss-cut robot femur with a hole pattern at the hip end"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Femur in 1060 aluminum. The truss pattern removes material from the web while
+      keeping the load path and the bolt circle intact.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>A structural link for a walking robot, where mass is the design driver — every gram in the
+      leg is mass the actuators accelerate twice per stride. The truss cutouts target the web,
+      which carries little in bending, while the flanges and the hip bolt circle stay solid.</p>
+    <p>Mass properties were tracked in SolidWorks as the cutouts developed, so the weight
+      reduction is measured against the solid baseline rather than assumed.</p>
+  </div>
+
+  <figure>
+    <img src="../assets/robot-femur/solidworks-mass-properties.png"
+         alt="SolidWorks session showing the femur model with the mass properties dialog open"
+         onerror="this.src='../assets/placeholder.svg'">
+    <figcaption>Mass properties checked against the design target as the geometry developed.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>This was scoped as a modeling and drawing exercise rather than a verified structural
+      design &mdash; the truss layout follows where bending load is lowest, but no stress
+      analysis was run against it. Taking it further would mean defining the stride load case
+      and solving the part under it, which would turn a reasoned cutout pattern into a justified
+      one. The <a href="biped-robot.html">bi-pedal jumping robot</a> is where I worked through
+      leg architecture properly.</p>
+  </div>
+
+  <dl class="title-block">
+    <div><dt>Course</dt><dd>Computer Graphics &amp; Design</dd></div>
+    <div><dt>Work</dt><dd>Individual</dd></div>
+    <div><dt>Tools</dt><dd>SolidWorks</dd></div>
+    <div><dt>Materials</dt><dd>Al 6061, Al 1060</dd></div>
+  </dl>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p><a href="../projects.html">← All projects</a></p>
+</footer>
+
+</body>
+</html>
